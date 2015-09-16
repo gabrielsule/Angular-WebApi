@@ -27,6 +27,6 @@ $http.post(myUrl, JSON.stringify(usuario))
 Contribucion
 ----
 
-Primordialmente a [Heber Lopez] (http://www.twitter.com/@HeberLZ) y a **Javier Alessandrello** (alessaj@gmail.com) que contribuyeron en la solución de los errores de comunicacion CORS
+Primordialmente a [Heber Lopez] (http://www.twitter.com/@HeberLZ) y a Javier Alessandrello (alessaj@gmail.com) que contribuyeron en la solución de los errores de comunicacion CORS
 
 
