@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <script src="js/vendor/angular/angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="myCtrl">
+        <button ng-click="Prueba()">Post</button>
+    </div>
+
+    <script>
+        var myApp = angular.module('myApp', []);
+        myApp.controller('myCtrl', function ($scope, $http) {
+            var myUrl = 'http://localhost:11551/api/Usuarios/AddUsuario/';
+            var usuario = {"UserName":"sample string 2","Nombre":"sample string 3","Apellido":"sample string 4","eMail":"sample string 5"};
+
+            $scope.Prueba = function(){
+                $http.post(myUrl, JSON.stringify(usuario))
+            .success(function(){
+                console.log('ok');
+            })
+            .error(function (data, status, headers, config) {
+                console.log(data);
+                console.log(status);
+                console.log(headers);
+                console.log(config);
+            });
+          };
+        });
+    </script>
+</body>
+</html>
