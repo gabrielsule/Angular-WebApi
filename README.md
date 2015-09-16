@@ -8,14 +8,28 @@ global.asax
 -----------
 ```
 protected void Application_BeginRequest(object sender, EventArgs e)
+{
+	if (HttpContext.Current != null && HttpContext.Current.Request != null) 
+	{ 
+		if (HttpContext.Current.Request.HttpMethod == "OPTIONS") 
+		{ 
+			HttpContext.Current.Response.StatusCode = 200; HttpContext.Current.Response.SuppressContent = true; 
+			HttpContext.Current.Response.End(); 
+		} 
+	}
+}
 ```
 
 web.config
 ----------
 ```
-<add name="Access-Control-Allow-Origin" value="*" />
-<add name="Access-Control-Allow-Headers" value="Content-Type, Origin, Accept, token, Authorization" />
-<add name="Access-Control-Allow-Methods" value="GET, POST, PUT, DELETE, OPTIONS" />
+<httpProtocol>
+	<customHeaders>
+		<add name="Access-Control-Allow-Origin" value="*" />
+		<add name="Access-Control-Allow-Headers" value="Content-Type, Origin, Accept, token, Authorization" />
+		<add name="Access-Control-Allow-Methods" value="GET, POST, PUT, DELETE, OPTIONS" />
+	</customHeaders>
+</httpProtocol>
 ```
 
 angular.js
@@ -28,5 +42,3 @@ Contribucion
 ----
 
 Primordialmente a [Heber Lopez] (http://www.twitter.com/@HeberLZ) y a Javier Alessandrello (alessaj@gmail.com) que contribuyeron en la solución de los errores de comunicacion CORS
-
-
